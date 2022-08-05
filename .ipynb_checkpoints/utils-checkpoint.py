@@ -24,12 +24,3 @@ def sampling_dataset(gt, predict):
         metrics['specificity_score'].append(tn/(tn+fp))
     
     return metrics
-
-def sampling_metrics(df):
-    metrics = []
-
-    for _ in tqdm(range(SAMPLE_TIME)):
-        rand_index = sample([i for i in range(len(df))], int(SAMPLE_RATIO*len(df)))
-        metrics.append(np.mean(df[rand_index]))
-        
-    return metrics
